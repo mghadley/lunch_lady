@@ -5,11 +5,12 @@ class MealsController < ApplicationController
 	end
 
 	def create
-		@meal = Meal.new(safe_params)
+		@meal = Meal.new
 		if @meal.save
-			render body: YAML::dump(safe_params[:main_dish_attributes])
-			# @meal.dishes = safe_params[:main_dish][:name]
-			# redirect_to root_path
+			# render body: YAML::dump(params)
+			@mealdish = MealDish.new(meal_id: @meal.id, dish_id: safe_params[:main_dish][:name].id) 
+			@mealdish.save
+			redirect_to root_path
 		else
 		 
 		end
@@ -21,7 +22,7 @@ class MealsController < ApplicationController
 	private
 
 	def safe_params
-		params.require(:meal).permit(:main_dish_attributes)
+		params.require(:meal).permit!
 	end
 
 end
