@@ -1,0 +1,46 @@
+<h1>Welcome to DevPoint High School's Virtual Lunch Lady</h1>
+<h2>Please select a main dish</h2>
+
+<%= form_for(@meal) do |f| %>
+	<%= f.fields_for :main_dish do |i| %>
+		<% Dish.all.select{ |d| d.category == 'Main Dish'}.each do |m| %>
+			<table>
+				<tr>
+					<td><%= i.radio_button :name, m %></td>
+					<td><%= i.label m.name %></td>
+				</tr>
+			</table>
+		<% end %>
+	<% end %>
+	<%= f.fields_for :side_dish do |i| %>
+		<% Dish.all.select{ |d| d.category == 'Side Dish'}.each do |s| %>
+			<table>
+				<tr>
+					<td><%= i.radio_button :name, s %></td>
+					<td><%= i.label s.name %></td>
+				</tr>
+			</table>
+		<% end %>
+	<% end %>
+	<%= f.fields_for :second_side_dish do |i| %>
+		<% Dish.all.select{ |d| d.category == 'Side Dish'}.each do |s| %>
+			<table>
+				<tr>
+					<td><%= i.radio_button :name, s %></td>
+					<td><%= i.label s.name %></td>
+				</tr>
+			</table>
+		<% end %>
+	<% end %>
+	<%= f.fields_for :add_ons do |i| %>
+		<% AddOn.all.each do |a| %>
+			<table>
+				<tr>
+					<td><%= i.check_box a %></td>
+					<td><%= i.label a.name %></td>
+				</tr>
+			</table>
+		<% end %>
+	<% end %>
+	<%= f.submit 'Submit' %>
+<% end %>
