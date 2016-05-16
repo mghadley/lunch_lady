@@ -1,46 +1,65 @@
 <h1>Welcome to DevPoint High School's Virtual Lunch Lady</h1>
-<h2>Please select a main dish</h2>
 
 <%= form_for(@meal) do |f| %>
-	<%= f.fields_for :main_dish do |i| %>
-		<% Dish.all.select{ |d| d.category == 'Main Dish'}.each do |m| %>
-			<table>
-				<tr>
-					<td><%= i.radio_button :name, m %></td>
-					<td><%= i.label m.name %></td>
-				</tr>
-			</table>
+	<h2>Please select a main dish</h2>
+	<section>
+		<% @meal.main_dishes.each do |dish, attr_hash| %>
+			<%= f.radio_button :main_dish, "#{dish}" %>
+			<%= f.label dish %>
+			<div>
+				<%= @meal.main_dishes[dish][:description] %>
+			</div>
+			<div>
+				<ul>
+					<li>Calories: <%= @meal.main_dishes[dish][:calories] %></li>
+					<li>Carbs: <%= @meal.main_dishes[dish][:carbs] %>g </li>
+					<li>Protein: <%= @meal.main_dishes[dish][:protein] %>g </li>
+					<li>Fat: <%= @meal.main_dishes[dish][:fat] %>g </li>
+					<li>Suagar: <%= @meal.main_dishes[dish][:sugar] %>g </li>
+				</ul>
+				<h4>$<%= @meal.main_dishes[dish][:price] %></h4>
+			</div>
 		<% end %>
-	<% end %>
-	<%= f.fields_for :side_dish do |i| %>
-		<% Dish.all.select{ |d| d.category == 'Side Dish'}.each do |s| %>
-			<table>
-				<tr>
-					<td><%= i.radio_button :name, s %></td>
-					<td><%= i.label s.name %></td>
-				</tr>
-			</table>
+	</section>
+	<h2>Please select your first side dish</h2>
+	<section>
+		<% @meal.side_dishes.each do |side, attr_hash| %>
+			<%= f.radio_button :side_dish_1, "#{side}" %>
+			<%= f.label side %>
+			<div>
+				<%= @meal.side_dishes[side][:description] %>
+			</div>
+			<div>
+				<ul>
+					<li>Calories: <%= @meal.side_dishes[side][:calories] %></li>
+					<li>Carbs: <%= @meal.side_dishes[side][:carbs] %>g </li>
+					<li>Protein: <%= @meal.side_dishes[side][:protein] %>g </li>
+					<li>Fat: <%= @meal.side_dishes[side][:fat] %>g </li>
+					<li>Suagar: <%= @meal.side_dishes[side][:sugar] %>g </li>
+				</ul>
+				<h4>$<%= @meal.side_dishes[side][:price] %></h4>
+			</div>
 		<% end %>
-	<% end %>
-	<%= f.fields_for :second_side_dish do |i| %>
-		<% Dish.all.select{ |d| d.category == 'Side Dish'}.each do |s| %>
-			<table>
-				<tr>
-					<td><%= i.radio_button :name, s %></td>
-					<td><%= i.label s.name %></td>
-				</tr>
-			</table>
+	</section>
+	<h2>Please select your second side dish</h2>
+	<section>
+		<% @meal.side_dishes.each do |side, attr_hash| %>
+			<%= f.radio_button :side_dish_2, "#{side}" %>
+			<%= f.label side %>
+			<div>
+				<%= @meal.side_dishes[side][:description] %>
+			</div>
+			<div>
+				<ul>
+					<li>Calories: <%= @meal.side_dishes[side][:calories] %></li>
+					<li>Carbs: <%= @meal.side_dishes[side][:carbs] %>g </li>
+					<li>Protein: <%= @meal.side_dishes[side][:protein] %>g </li>
+					<li>Fat: <%= @meal.side_dishes[side][:fat] %>g </li>
+					<li>Suagar: <%= @meal.side_dishes[side][:sugar] %>g </li>
+				</ul>
+				<h4>$<%= @meal.side_dishes[side][:price] %></h4>
+			</div>
 		<% end %>
-	<% end %>
-	<%= f.fields_for :add_ons do |i| %>
-		<% AddOn.all.each do |a| %>
-			<table>
-				<tr>
-					<td><%= i.check_box a %></td>
-					<td><%= i.label a.name %></td>
-				</tr>
-			</table>
-		<% end %>
-	<% end %>
+	</section>
 	<%= f.submit 'Submit' %>
 <% end %>

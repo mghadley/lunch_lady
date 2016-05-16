@@ -2,6 +2,7 @@ class MealsController < ApplicationController
 
 	def new
 		@meal = Meal.new
+		@meal.set_attr
 	end
 
 	def create

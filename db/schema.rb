@@ -11,53 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513212027) do
-
-  create_table "add_ons", force: :cascade do |t|
-    t.string   "name"
-    t.float    "price"
-    t.float    "calories"
-    t.float    "carbs"
-    t.float    "protein"
-    t.float    "fat"
-    t.float    "sugar"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "dishes", force: :cascade do |t|
-    t.string   "category"
-    t.string   "name"
-    t.string   "description"
-    t.float    "price"
-    t.float    "calories"
-    t.float    "carbs"
-    t.float    "protein"
-    t.float    "fat"
-    t.float    "sugar"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "meal_add_ons", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "meal_dishes", force: :cascade do |t|
-    t.integer  "meal_id"
-    t.integer  "dish_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "meal_dishes", ["dish_id"], name: "index_meal_dishes_on_dish_id"
-  add_index "meal_dishes", ["meal_id"], name: "index_meal_dishes_on_meal_id"
+ActiveRecord::Schema.define(version: 20160513203805) do
 
   create_table "meals", force: :cascade do |t|
+    t.string   "main_dish"
+    t.string   "side_dish_1"
+    t.string   "side_dish_2"
+    t.string   "add_ons"
+    t.float    "main_dish_price"
+    t.float    "side_dish_1_price"
+    t.float    "side_dish_2_price"
+    t.float    "add_ons_price"
     t.float    "final_price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end
