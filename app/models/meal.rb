@@ -14,7 +14,7 @@ class Meal < ActiveRecord::Base
 		{
 			fries: {description: "If you're getting a burger, you'll need these too", price: 2, calories: 100, carbs: 75, protein: 0, fat: 50, sugar: 0},
 			milk_shake: {description: "If you're getting fries, you'll want to dip them in this", price: 1.75, calories: 100, carbs: 50, protein: 10, fat: 30, sugar: 50},
-			fried_pickles: {description: "Crsipy, deep fried, dill. So, so good", price: 2, calories: 50, carbs: 20, protein: 0, fat: 15, sugar: 0},
+			fried_pickles: {description: "Crispy, deep fried, dill. So, so good", price: 2, calories: 50, carbs: 20, protein: 0, fat: 15, sugar: 0},
 			salad: {description: "We felt obligated to include this", price: 3, calories: 0, carbs: 0, protein: 0, fat: 0, sugar: 0}
 		}
 	end
