@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160513203805) do
     t.string   "side_dish_1"
     t.string   "side_dish_2"
     t.string   "add_ons"
+    t.float    "wallet"
     t.float    "main_dish_price"
     t.float    "side_dish_1_price"
     t.float    "side_dish_2_price"

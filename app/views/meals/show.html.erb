@@ -1,0 +1,7 @@
+<%= @meal.main_dish.titleize %>
+<%= @meal.side_dish_1.titleize %>
+<%=	@meal.side_dish_2.titleize %>
+<% @meal.add_ons.each do |add_on, value| %>
+	<%= add_on.gsub(/_/, " ").titleize %>
+<% end %>
+<%= @meal.final_price %>
