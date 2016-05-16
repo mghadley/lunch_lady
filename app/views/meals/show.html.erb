@@ -1,7 +1,19 @@
-<%= @meal.main_dish.titleize %>
-<%= @meal.side_dish_1.titleize %>
-<%=	@meal.side_dish_2.titleize %>
-<% @meal.add_ons.each do |add_on, value| %>
-	<%= add_on.gsub(/_/, " ").titleize %>
-<% end %>
-<%= @meal.final_price %>
+<header>
+	<h1>Your Order</h1>
+</header>
+<div id="show-order">
+	<div>
+		<h2><%= @meal.main_dish.titleize %></h2>
+		<h2><%= @meal.side_dish_1.titleize %></h2>
+		<h2><%=	@meal.side_dish_2.titleize %></h2>
+	</div>
+	<div id="add-ons">
+		<% @meal.add_ons.each do |add_on, value| %>
+			<h3><%= add_on.gsub(/_/, " ").titleize %></h3>
+		<% end %>
+	</div>
+	<div>
+		<h1>Total Price</h1>
+		<h2><%= @meal.final_price %></h2>
+	</div>
+</div>
